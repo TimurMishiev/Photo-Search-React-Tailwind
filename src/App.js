@@ -8,7 +8,8 @@ export default function App() {
 
 	useEffect(() => {
 		fetch(
-			`https://pixabay.com/api/videos/?key=${process.env.REACT_APP_PIXABAY_API_KEY}&q=yellow+flowers&pretty=true`
+			//`https://pixabay.com/api/?key=25742989-a7b4c56eb69c40d6bb7f373d9&q=yellow+flowers&image_type=photo&pretty=true`
+			`https://pixabay.com/api/?key=${process.env.REACT_APP_PIXABAY_API_KEY}&q=${term}&image_type=photo&pretty=true`
 		)
 			.then((response) => response.json())
 			.then((data) => {
