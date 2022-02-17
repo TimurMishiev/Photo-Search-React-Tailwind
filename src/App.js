@@ -8,7 +8,6 @@ export default function App() {
 
 	useEffect(() => {
 		fetch(
-			//`https://pixabay.com/api/?key=25742989-a7b4c56eb69c40d6bb7f373d9&q=yellow+flowers&image_type=photo&pretty=true`
 			`https://pixabay.com/api/?key=${process.env.REACT_APP_PIXABAY_API_KEY}&q=${term}&image_type=photo&pretty=true`
 		)
 			.then((response) => response.json())
@@ -21,11 +20,15 @@ export default function App() {
 
 	return (
 		<div className="container mx-auto">
-			<div className="grid grid-cols-3 gap-4">
-				{images.map((image) => (
-					<ImageCard key={image.id} image={image} />
-				))}
-			</div>
+			{isLoading ? (
+				<h1 className="text-6xl text-center mx-auto mt-32">Loading..</h1>
+			) : (
+				<div className="grid grid-cols-3 gap-4">
+					{images.map((image) => (
+						<ImageCard key={image.id} image={image} />
+					))}
+				</div>
+			)}
 		</div>
 	);
 }
